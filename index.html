@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rocket League Arena</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-panel">
+      <div class="title-wrap">
+        <p class="eyebrow">Arcade car soccer</p>
+        <h1>Rocket League Arena</h1>
+        <p class="subtitle">
+          Battle a full field of bots, toggle autopilot for your car, and try to run
+          up the score before time expires.
+        </p>
+      </div>
+
+      <div class="control-row">
+        <button id="autoplayButton" class="ui-button" type="button">Auto Play: Off</button>
+        <button id="resetButton" class="ui-button ui-button-secondary" type="button">Restart Match</button>
+      </div>
+
+      <div class="meta-grid">
+        <article class="meta-card">
+          <span class="meta-label">Controls</span>
+          <p>WASD / Arrows move, Shift boost, Space dodge, T toggles auto play.</p>
+        </article>
+        <article class="meta-card">
+          <span class="meta-label">Modes</span>
+          <p>2v2 match with three bots active at all times, including an ally bot.</p>
+        </article>
+        <article class="meta-card">
+          <span class="meta-label">Tip</span>
+          <p>Use boost on straight runs and dodge into the ball when lined up on goal.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="arena-panel">
+      <div class="scoreboard">
+        <div class="team-chip team-blue">
+          <span class="team-name">Blue</span>
+          <span id="blueScore" class="team-score">0</span>
+        </div>
+        <div class="clock-wrap">
+          <span id="matchClock" class="clock">03:00</span>
+          <span id="statusText" class="status-text">Kickoff</span>
+        </div>
+        <div class="team-chip team-orange">
+          <span class="team-name">Orange</span>
+          <span id="orangeScore" class="team-score">0</span>
+        </div>
+      </div>
+
+      <div class="canvas-frame">
+        <canvas id="gameCanvas" width="1280" height="720" aria-label="Rocket League style arena"></canvas>
+        <div id="centerBanner" class="center-banner">3</div>
+      </div>
+
+      <div class="hud-row">
+        <div class="hud-card">
+          <span class="hud-label">Boost</span>
+          <div class="boost-meter">
+            <div id="boostFill" class="boost-fill"></div>
+          </div>
+        </div>
+        <div class="hud-card">
+          <span class="hud-label">Player Mode</span>
+          <strong id="playerModeValue">Manual</strong>
+        </div>
+        <div class="hud-card">
+          <span class="hud-label">Match State</span>
+          <strong id="matchStateValue">Kickoff countdown</strong>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>

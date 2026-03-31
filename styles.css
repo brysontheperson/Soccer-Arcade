@@ -1,0 +1,314 @@
+:root {
+  color-scheme: dark;
+  --bg-1: #04131f;
+  --bg-2: #071f31;
+  --panel: rgba(8, 23, 37, 0.84);
+  --panel-border: rgba(133, 177, 211, 0.18);
+  --text-main: #edf8ff;
+  --text-muted: #9fbacd;
+  --blue: #25b6ff;
+  --blue-deep: #0f5fba;
+  --orange: #ff9b2f;
+  --orange-deep: #d95d16;
+  --lime: #b7ff7c;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(37, 182, 255, 0.16), transparent 30%),
+    radial-gradient(circle at 85% 15%, rgba(255, 155, 47, 0.18), transparent 24%),
+    linear-gradient(160deg, var(--bg-1), var(--bg-2) 48%, #030b12);
+  color: var(--text-main);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 92%);
+}
+
+.app-shell {
+  width: min(1500px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 22px;
+}
+
+.hero-panel,
+.arena-panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.hero-panel {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.eyebrow,
+.meta-label,
+.hud-label,
+.team-name,
+.status-text {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.eyebrow,
+.meta-label,
+.hud-label,
+.status-text {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+h1 {
+  margin: 10px 0 12px;
+  font-family: "Arial Black", "Bahnschrift", sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 0.95;
+}
+
+.subtitle,
+.meta-card p {
+  margin: 0;
+  color: #d9edf9;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ui-button {
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 18px;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #04131f;
+  background: linear-gradient(135deg, #fff6dd, #ffc562);
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+  box-shadow: 0 10px 24px rgba(255, 175, 68, 0.28);
+}
+
+.ui-button:hover,
+.ui-button:focus-visible {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.ui-button[aria-pressed="true"] {
+  background: linear-gradient(135deg, #cbff8a, #7fed7a);
+  box-shadow: 0 10px 24px rgba(143, 237, 122, 0.28);
+}
+
+.ui-button-secondary {
+  color: var(--text-main);
+  background: linear-gradient(135deg, rgba(37, 182, 255, 0.18), rgba(37, 182, 255, 0.08));
+  border: 1px solid rgba(37, 182, 255, 0.28);
+  box-shadow: none;
+}
+
+.meta-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.meta-card {
+  padding: 16px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
+}
+
+.arena-panel {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scoreboard,
+.hud-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.team-chip,
+.clock-wrap,
+.hud-card {
+  border-radius: 20px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(5, 15, 24, 0.74);
+}
+
+.team-chip {
+  min-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.team-blue {
+  box-shadow: inset 0 0 0 1px rgba(37, 182, 255, 0.16);
+}
+
+.team-orange {
+  box-shadow: inset 0 0 0 1px rgba(255, 155, 47, 0.16);
+}
+
+.team-score,
+.clock {
+  font-family: "Arial Black", "Bahnschrift", sans-serif;
+  font-size: 2rem;
+}
+
+.clock-wrap {
+  flex: 1;
+  text-align: center;
+}
+
+.clock {
+  display: block;
+}
+
+.canvas-frame {
+  position: relative;
+  padding: 10px;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(12, 30, 48, 0.96), rgba(4, 12, 18, 0.98));
+  border: 1px solid rgba(130, 182, 214, 0.18);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  background: radial-gradient(circle at center, #174363, #0b1d2d 68%);
+}
+
+.center-banner {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: "Arial Black", "Bahnschrift", sans-serif;
+  font-size: clamp(4rem, 16vw, 8rem);
+  color: rgba(245, 251, 255, 0.95);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 220ms ease, transform 220ms ease;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
+}
+
+.center-banner.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hud-row {
+  align-items: stretch;
+}
+
+.hud-card {
+  flex: 1;
+  min-height: 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.boost-meter {
+  width: 100%;
+  height: 16px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.boost-fill {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ffde73, #ff9a29);
+  box-shadow: 0 0 20px rgba(255, 180, 56, 0.35);
+  transition: width 120ms linear;
+}
+
+strong {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1120px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .app-shell {
+    width: min(100vw - 16px, 100%);
+    padding: 10px 0 24px;
+    gap: 12px;
+  }
+
+  .hero-panel,
+  .arena-panel {
+    border-radius: 20px;
+  }
+
+  .hero-panel {
+    padding: 18px;
+  }
+
+  .scoreboard,
+  .hud-row {
+    flex-direction: column;
+  }
+
+  .team-chip,
+  .clock-wrap,
+  .hud-card {
+    width: 100%;
+  }
+}
